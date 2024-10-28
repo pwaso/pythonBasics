@@ -2,6 +2,7 @@
 1. Hacker Rank Problem
     Link : https://www.hackerrank.com/challenges/python-loops/problem
 """
+import sys
 
 
 def hackerrankProblem():
@@ -169,7 +170,7 @@ def factorial():
 def firstOccurrenceOfNumber():
     list = [4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     flag = 0
-    number =3
+    number = 3
     while flag < len(list):
         if list[flag] == number:
             print(f'First occurrence of {number} is on position: ', flag)
@@ -177,19 +178,140 @@ def firstOccurrenceOfNumber():
         flag += 1
 
 
-
 """
 15. Calculate the sum of numbers from 1 to 100 using a while loop
 """
+
+
 def sumOfNumbersUsingWhile():
     sum = 0
-    num =100
-    while num>0:
+    num = 100
+    while num > 0:
         sum += num
         num -= 1
     print('The sum of numbers from 1 to 100 is ', sum)
     print(int(50 ** 0.5))
 
+
+"""
+16. Find all prime numbers between 1 and 50 using nested for and if
+"""
+
+
+def primeNumbers():
+    primeNumbers = []
+    for i in range(2, 50):
+        isPrime = True
+        for j in range(2, int(i ** 0.5) + 1):
+            if i % j == 0:
+                isPrime = False
+                break
+        if isPrime: primeNumbers.append(i)
+    print(primeNumbers)
+
+
+"""
+17. Print numbers divisible by 3 or 5 from 1 to 20 using a for loop
+"""
+
+
+def divisibleBy3or5():
+    for i in range(1, 21):
+        if i % 3 == 0 or i % 5 == 0:
+            print(i)
+
+
+"""
+18. Print a list of squares of numbers from 1 to 5 using a list comprehension
+"""
+
+
+def squareOfNumbers():
+    numbers = [1, 2, 3, 4, 5]
+    squares = []
+    for i in numbers:
+        squares.append(i * i)
+    print(squares)
+
+
+"""
+19. Print the Fibonacci sequence up to the 10th term using a while loop
+"""
+
+
+def fibonacci():
+    n = 10
+    n1, n2 = 0, 1
+    while n > 0:
+        print(n1)
+        n3 = n2 + n1
+        n1 = n2
+        n2 = n3
+        n -= 1
+
+
+"""
+20. Find the common elements in two lists using a for loop
+"""
+
+
+def commonElements():
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 3]
+    for i in list1:
+        for j in list2:
+            if i == j:
+                print(i)
+
+
+"""
+21. Print numbers in a list until a negative number is encountered using a while loop
+"""
+def printNumbersUntilNegative():
+    list1 = [1, 2, 3,4,5,6,7,8,9,-4,6,7,8,4,3,2]
+    i = 0
+    while i < len(list1):
+        if list1[i] < 0:
+            break
+        print(list1[i])
+        i += 1
+
+
+"""
+22. Print numbers from 1 to 5, except 3 using a for loop and continue statement
+"""
+def printNumbersWithContinue():
+    for i in range(1, 6):
+        if i == 3:
+            continue
+        print(i)
+"""
+23. Print numbers from 1 to 10. If a number is divisible by 4, stop the loop using a for loop and break statement
+"""
+def divisibleBy4():
+    for i in range(1, 11):
+        if i % 4 == 0:
+            break
+        print(i)
+
+"""
+24. Print numbers from 1 to 10. If a number is even, skip it using a for loop and else clause
+"""
+def evenNumbers():
+    for i in range(1, 11):
+        if i % 2 == 0:
+            continue
+        else:
+            print(i)
+
+"""
+25. Print numbers from 1 to 10. If a number is even, break the loop using a for loop and else clause::
+"""
+def evenNumbersWithBreak():
+    for i in range(1, 11):
+        if i % 2 == 0:
+            break
+        print(i)
 
 optionActions = {
     1: hackerrankProblem,
@@ -207,7 +329,16 @@ optionActions = {
     13: factorial,
     14: firstOccurrenceOfNumber,
     15: sumOfNumbersUsingWhile,
-
+    16: primeNumbers,
+    17: divisibleBy3or5,
+    18: squareOfNumbers,
+    19: fibonacci,
+    20: commonElements,
+    21: printNumbersUntilNegative,
+    22: printNumbersWithContinue,
+    23: divisibleBy4,
+    24: evenNumbers,
+    25: evenNumbersWithBreak,
 }
 
 while True:
@@ -216,5 +347,7 @@ while True:
     function = optionActions.get(option)
     if function:
         function()
+    elif option == 0:
+        sys.exit()
     else:
         print("Invalid option")
